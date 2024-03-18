@@ -1,19 +1,19 @@
 import {useState} from "react";
 
-const useHttp = (requestOptions) => {
+const useHttp = (requestOptions, manageData) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const sendHttpRequest = async (productText, manageData) => {
+    const sendHttpRequest = async () => {
         setIsLoading(true);
         setError(null);
         try {
             const response = await fetch(
                 requestOptions.endpoint,
                 {
-                    method: requestOptions.method,
-                    headers: requestOptions.headers,
-                    body: JSON.stringify(requestOptions.body)
+                    method: requestOptions.method ? requestOptions.method : 'GET',
+                    headers: requestOptions.headers ? requestOptions.headers : {},
+                    body: requestOptions.body ? JSON.stringify(requestOptions.body) : null,
                 }
             );
 
