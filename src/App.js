@@ -13,7 +13,7 @@ function App() {
     setError(null);
     try {
       const response = await fetch(
-        "https://react-course-http-8220d-default-rtdb.firebaseio.com/products.json"
+        "https://react-udemy-http-requests-default-rtdb.firebaseio.com/products.json"
       );
 
       if (!response.ok) {
